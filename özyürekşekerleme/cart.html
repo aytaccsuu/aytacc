@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alışveriş Sepeti - Özyürek Şekerleme</title>
+    <meta name="description" content="Özyürek Şekerleme alışveriş sepetiniz - geleneksel Türk lokumu ve şekerleme siparişiniz.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link id="rtl-style" rel="stylesheet" href="">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Üst Menü -->
+    <header>
+        <div class="container">
+            <div class="top-bar">
+                <div class="language-selector">
+                    <button onclick="changeLanguage('tr')" class="lang-btn active" data-lang="tr">TR</button>
+                    <button onclick="changeLanguage('en')" class="lang-btn" data-lang="en">EN</button>
+                    <button onclick="changeLanguage('ar')" class="lang-btn" data-lang="ar">AR</button>
+                </div>
+                <div class="user-actions">
+                    <a href="login.html" class="btn-link" data-i18n="header.login">Giriş Yap</a>
+                    <a href="register.html" class="btn-link" data-i18n="header.register">Kayıt Ol</a>
+                    <a href="cart.html" class="cart-icon active">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+            <div class="main-header">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="img/logo.png" alt="Özyürek Şekerleme Logo">
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <button class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <ul class="menu">
+                        <li><a href="index.html" data-i18n="menu.home">Ana Sayfa</a></li>
+                        <li><a href="products.html" data-i18n="menu.products">Ürünlerimiz</a></li>
+                        <li><a href="products.html?category=lokum" data-i18n="menu.turkish_delight">Türk Lokumu</a></li>
+                        <li><a href="products.html?category=sekerleme" data-i18n="menu.candy">Şekerleme</a></li>
+                        <li><a href="index.html#about" data-i18n="menu.about">Hakkımızda</a></li>
+                        <li><a href="index.html#contact" data-i18n="menu.contact">İletişim</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Ana Bölüm -->
+    <main>
+        <section class="cart-section">
+            <div class="container">
+                <h1 class="page-title" data-i18n="cart.title">Alışveriş Sepeti</h1>
+
+                <div class="cart-content" id="cart-content">
+                    <!-- Sepet İçeriği Yükleniyor... mesajı -->
+                    <div class="cart-loader" id="cart-loader">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p data-i18n="cart.loading">Sepetiniz yükleniyor...</p>
+                    </div>
+
+                    <!-- Boş Sepet İçeriği -->
+                    <div class="empty-cart hidden" id="empty-cart">
+                        <div class="empty-cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h2 data-i18n="cart.empty_title">Sepetiniz Boş</h2>
+                        <p data-i18n="cart.empty_description">Sepetinizde henüz ürün bulunmamaktadır.</p>
+                        <a href="products.html" class="btn-primary" data-i18n="cart.continue_shopping">Alışverişe Başla</a>
+                    </div>
+
+                    <!-- Dolu Sepet İçeriği -->
+                    <div class="cart-layout hidden" id="filled-cart">
+                        <div class="cart-items">
+                            <div class="cart-header">
+                                <div class="cart-column product-column" data-i18n="cart.product">Ürün</div>
+                                <div class="cart-column price-column" data-i18n="cart.price">Fiyat</div>
+                                <div class="cart-column quantity-column" data-i18n="cart.quantity">Adet</div>
+                                <div class="cart-column total-column" data-i18n="cart.total">Toplam</div>
+                                <div class="cart-column action-column"></div>
+                            </div>
+                            <div id="cart-items-container">
+                                <!-- Sepet öğeleri JS ile doldurulacak -->
+                            </div>
+                        </div>
+                        
+                        <!-- Sepeti Güncelle ve Boşalt -->
+                        <div class="cart-actions">
+                            <button id="clear-cart" class="btn-secondary" data-i18n="cart.clear_cart">Sepeti Boşalt</button>
+                            <button id="update-cart" class="btn-secondary" data-i18n="cart.update_cart">Sepeti Güncelle</button>
+                        </div>
+
+                        <!-- Sepet Özeti ve İşlem -->
+                        <div class="cart-summary">
+                            <div class="coupon-section">
+                                <h3 data-i18n="cart.coupon_title">İndirim Kuponu</h3>
+                                <p data-i18n="cart.coupon_description">İndirim kuponunuz varsa aşağıya giriniz.</p>
+                                <div class="coupon-form">
+                                    <input type="text" id="coupon-code" placeholder="Kupon Kodu">
+                                    <button id="apply-coupon" class="btn-secondary" data-i18n="cart.apply_coupon">Kuponu Uygula</button>
+                                </div>
+                            </div>
+                            <div class="order-summary">
+                                <h3 data-i18n="cart.order_summary">Sipariş Özeti</h3>
+                                <div class="summary-row">
+                                    <span data-i18n="cart.subtotal">Ara Toplam</span>
+                                    <span id="cart-subtotal">0.00 TL</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span data-i18n="cart.shipping">Kargo</span>
+                                    <span id="cart-shipping">0.00 TL</span>
+                                </div>
+                                <div class="summary-row discount-row" id="discount-row">
+                                    <span data-i18n="cart.discount">İndirim</span>
+                                    <span id="cart-discount">-0.00 TL</span>
+                                </div>
+                                <div class="summary-row total-row">
+                                    <span data-i18n="cart.total">Genel Toplam</span>
+                                    <span id="cart-total">0.00 TL</span>
+                                </div>
+                                <button id="proceed-to-checkout" class="btn-primary" data-i18n="cart.proceed_to_checkout">Ödemeye Geç</button>
+                                <div class="continue-shopping">
+                                    <a href="products.html" data-i18n="cart.continue_shopping">Alışverişe Devam Et</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tavsiye Edilen Ürünler -->
+        <section class="recommended-products">
+            <div class="container">
+                <h2 class="section-title" data-i18n="cart.recommended_products">Sizin İçin Seçtiklerimiz</h2>
+                <div class="products-grid" id="recommended-products">
+                    <!-- Tavsiye edilen ürünler JS ile doldurulacak -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Alt Bilgi -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="img/logo.png" alt="Özyürek Şekerleme Logo">
+                    <p data-i18n="footer.tagline">Geleneksel lezzetin doğal hali</p>
+                </div>
+                <div class="footer-links">
+                    <h3 data-i18n="footer.quick_links">Hızlı Bağlantılar</h3>
+                    <ul>
+                        <li><a href="index.html" data-i18n="menu.home">Ana Sayfa</a></li>
+                        <li><a href="products.html" data-i18n="menu.products">Ürünlerimiz</a></li>
+                        <li><a href="index.html#about" data-i18n="menu.about">Hakkımızda</a></li>
+                        <li><a href="index.html#contact" data-i18n="menu.contact">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3 data-i18n="footer.categories">Kategoriler</h3>
+                    <ul>
+                        <li><a href="products.html?category=lokum" data-i18n="categories.turkish_delight">Türk Lokumu</a></li>
+                        <li><a href="products.html?category=sekerleme" data-i18n="categories.candy">Şekerleme</a></li>
+                        <li><a href="products.html?category=ozel" data-i18n="categories.special_production">Özel Üretim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3 data-i18n="footer.newsletter">Bültenimize Abone Olun</h3>
+                    <p data-i18n="footer.newsletter_info">Yeni ürünler ve özel teklifler için abone olun</p>
+                    <form id="newsletterForm">
+                        <div class="form-group">
+                            <input type="email" id="newsletter-email" name="email" placeholder="E-posta adresiniz" required>
+                            <button type="submit" class="btn-secondary" data-i18n="footer.subscribe">Abone Ol</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Özyürek Şekerleme - <span data-i18n="footer.rights">Tüm Hakları Saklıdır</span></p>
+                <div class="payment-methods">
+                    <img src="img/payment-methods.png" alt="Ödeme Yöntemleri">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/i18n.js"></script>
+    <script src="js/site.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/product.js"></script>
+</body>
+</html>

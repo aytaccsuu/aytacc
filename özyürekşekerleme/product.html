@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ürün Detayı - Özyürek Şekerleme</title>
+    <meta name="description" content="Özyürek Şekerleme'nin eşsiz lezzetteki Türk lokumu ve şekerleme ürünleri.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link id="rtl-style" rel="stylesheet" href="">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Üst Menü -->
+    <header>
+        <div class="container">
+            <div class="top-bar">
+                <div class="language-selector">
+                    <button onclick="changeLanguage('tr')" class="lang-btn active" data-lang="tr">TR</button>
+                    <button onclick="changeLanguage('en')" class="lang-btn" data-lang="en">EN</button>
+                    <button onclick="changeLanguage('ar')" class="lang-btn" data-lang="ar">AR</button>
+                </div>
+                <div class="user-actions">
+                    <a href="login.html" class="btn-link" data-i18n="header.login">Giriş Yap</a>
+                    <a href="register.html" class="btn-link" data-i18n="header.register">Kayıt Ol</a>
+                    <a href="cart.html" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+            <div class="main-header">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="img/logo.png" alt="Özyürek Şekerleme Logo">
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <button class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <ul class="menu">
+                        <li><a href="index.html" data-i18n="menu.home">Ana Sayfa</a></li>
+                        <li><a href="products.html" class="active" data-i18n="menu.products">Ürünlerimiz</a></li>
+                        <li><a href="products.html?category=lokum" data-i18n="menu.turkish_delight">Türk Lokumu</a></li>
+                        <li><a href="products.html?category=sekerleme" data-i18n="menu.candy">Şekerleme</a></li>
+                        <li><a href="index.html#about" data-i18n="menu.about">Hakkımızda</a></li>
+                        <li><a href="index.html#contact" data-i18n="menu.contact">İletişim</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Ana Bölüm -->
+    <main>
+        <!-- Ürün Detay -->
+        <section class="product-detail-section">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="index.html" data-i18n="menu.home">Ana Sayfa</a> / 
+                    <a href="products.html" data-i18n="menu.products">Ürünlerimiz</a> /
+                    <span id="product-category" data-i18n="categories.turkish_delight">Türk Lokumu</span> /
+                    <span id="product-name">Antep Fıstıklı Türk Lokumu</span>
+                </div>
+
+                <div class="product-detail" id="product-detail">
+                    <!-- Ürün Detayı JS ile doldurulacak -->
+                    <div class="product-loader centered">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </div>
+                </div>
+
+                <!-- Ürün detay şablonu - JavaScript ile doldurulacak -->
+                <template id="product-detail-template">
+                    <div class="product-gallery">
+                        <div class="main-image">
+                            <img src="" alt="" id="product-main-image">
+                        </div>
+                        <div class="thumbnail-images" id="product-thumbnails">
+                            <!-- Küçük resimler dinamik olarak eklenecek -->
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h1 id="detail-product-name"></h1>
+                        <div class="product-meta">
+                            <div class="product-rating">
+                                <span class="stars"></span>
+                                <span class="review-count"></span>
+                            </div>
+                            <div class="product-sku">
+                                <span data-i18n="product.sku">Ürün Kodu:</span> <span id="product-sku"></span>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price" id="product-price"></span>
+                            <span class="old-price" id="product-old-price"></span>
+                            <span class="discount-badge" id="product-discount"></span>
+                        </div>
+                        <div class="product-description">
+                            <p id="product-description"></p>
+                        </div>
+                        <div class="product-variations">
+                            <div class="variation-group">
+                                <label data-i18n="product.weight">Ağırlık Seçimi:</label>
+                                <div class="weight-options" id="weight-options">
+                                    <button class="weight-option active" data-weight="250">250g</button>
+                                    <button class="weight-option" data-weight="500">500g</button>
+                                    <button class="weight-option" data-weight="1000">1kg</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <div class="quantity-selector">
+                                <button class="qty-btn decrease">-</button>
+                                <input type="number" id="product-quantity" value="1" min="1" max="10">
+                                <button class="qty-btn increase">+</button>
+                            </div>
+                            <button class="btn-primary add-to-cart" id="add-to-cart-btn">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span data-i18n="product.add_to_cart">Sepete Ekle</span>
+                            </button>
+                        </div>
+                        <div class="product-additional-info">
+                            <div class="info-item">
+                                <i class="fas fa-truck"></i>
+                                <span data-i18n="product.shipping">1-3 gün içinde kargoya verilir</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-redo"></i>
+                                <span data-i18n="product.return">14 gün içinde iade garantisi</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span data-i18n="product.quality">Kalite garantili</span>
+                            </div>
+                        </div>
+                        <div class="product-share">
+                            <span data-i18n="product.share">Paylaş:</span>
+                            <div class="social-share">
+                                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- Ürün Detay Sekmeleri -->
+                <div class="product-tabs">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" data-tab="description" data-i18n="product.tab_description">Ürün Açıklaması</button>
+                        <button class="tab-btn" data-tab="nutrition" data-i18n="product.tab_nutrition">Besin Değerleri</button>
+                        <button class="tab-btn" data-tab="reviews" data-i18n="product.tab_reviews">Yorumlar</button>
+                    </div>
+                    <div class="tabs-content">
+                        <div class="tab-pane active" id="description">
+                            <div class="tab-content-inner">
+                                <h3 data-i18n="product.description_title">Ürün Detayları</h3>
+                                <p id="product-long-description">
+                                    <!-- Uzun açıklama JS ile doldurulacak -->
+                                </p>
+                                <div class="product-features">
+                                    <h4 data-i18n="product.features_title">Özellikler</h4>
+                                    <ul id="product-features">
+                                        <!-- Özellikler JS ile doldurulacak -->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="nutrition">
+                            <div class="tab-content-inner">
+                                <h3 data-i18n="product.nutrition_title">Besin Değerleri</h3>
+                                <div class="nutrition-info">
+                                    <table class="nutrition-table">
+                                        <thead>
+                                            <tr>
+                                                <th data-i18n="product.nutrition_component">Besin Öğesi</th>
+                                                <th data-i18n="product.nutrition_amount">Miktar (100g için)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="nutrition-table-body">
+                                            <!-- Besin değerleri JS ile doldurulacak -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p class="nutrition-disclaimer" data-i18n="product.nutrition_disclaimer">
+                                    * Değerler ortalama olup, üretim partisi ve tür değişikliklerine göre farklılık gösterebilir.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="reviews">
+                            <div class="tab-content-inner">
+                                <h3 data-i18n="product.reviews_title">Müşteri Yorumları</h3>
+                                <div class="reviews-summary">
+                                    <div class="average-rating">
+                                        <div class="rating-number" id="average-rating">4.7</div>
+                                        <div class="rating-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                        <div class="rating-count" id="review-count">15 yorum</div>
+                                    </div>
+                                    <div class="rating-bars">
+                                        <div class="rating-bar-item">
+                                            <span class="rating-label">5</span>
+                                            <div class="rating-bar">
+                                                <div class="bar-fill" style="width: 75%"></div>
+                                            </div>
+                                            <span class="rating-count">11</span>
+                                        </div>
+                                        <div class="rating-bar-item">
+                                            <span class="rating-label">4</span>
+                                            <div class="rating-bar">
+                                                <div class="bar-fill" style="width: 15%"></div>
+                                            </div>
+                                            <span class="rating-count">3</span>
+                                        </div>
+                                        <div class="rating-bar-item">
+                                            <span class="rating-label">3</span>
+                                            <div class="rating-bar">
+                                                <div class="bar-fill" style="width: 10%"></div>
+                                            </div>
+                                            <span class="rating-count">1</span>
+                                        </div>
+                                        <div class="rating-bar-item">
+                                            <span class="rating-label">2</span>
+                                            <div class="rating-bar">
+                                                <div class="bar-fill" style="width: 0%"></div>
+                                            </div>
+                                            <span class="rating-count">0</span>
+                                        </div>
+                                        <div class="rating-bar-item">
+                                            <span class="rating-label">1</span>
+                                            <div class="rating-bar">
+                                                <div class="bar-fill" style="width: 0%"></div>
+                                            </div>
+                                            <span class="rating-count">0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="reviews-list" id="reviews-list">
+                                    <!-- Yorumlar JS ile doldurulacak -->
+                                </div>
+                                <button class="btn-secondary" id="load-more-reviews" data-i18n="product.load_more_reviews">Daha Fazla Yorum Yükle</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Benzer Ürünler -->
+                <div class="related-products">
+                    <h2 class="section-title" data-i18n="product.related_products">Benzer Ürünler</h2>
+                    <div class="products-grid" id="related-products">
+                        <!-- Benzer ürünler JS ile doldurulacak -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Alt Bilgi -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="img/logo.png" alt="Özyürek Şekerleme Logo">
+                    <p data-i18n="footer.tagline">Geleneksel lezzetin doğal hali</p>
+                </div>
+                <div class="footer-links">
+                    <h3 data-i18n="footer.quick_links">Hızlı Bağlantılar</h3>
+                    <ul>
+                        <li><a href="index.html" data-i18n="menu.home">Ana Sayfa</a></li>
+                        <li><a href="products.html" data-i18n="menu.products">Ürünlerimiz</a></li>
+                        <li><a href="index.html#about" data-i18n="menu.about">Hakkımızda</a></li>
+                        <li><a href="index.html#contact" data-i18n="menu.contact">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3 data-i18n="footer.categories">Kategoriler</h3>
+                    <ul>
+                        <li><a href="products.html?category=lokum" data-i18n="categories.turkish_delight">Türk Lokumu</a></li>
+                        <li><a href="products.html?category=sekerleme" data-i18n="categories.candy">Şekerleme</a></li>
+                        <li><a href="products.html?category=ozel" data-i18n="categories.special_production">Özel Üretim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3 data-i18n="footer.newsletter">Bültenimize Abone Olun</h3>
+                    <p data-i18n="footer.newsletter_info">Yeni ürünler ve özel teklifler için abone olun</p>
+                    <form id="newsletterForm">
+                        <div class="form-group">
+                            <input type="email" id="newsletter-email" name="email" placeholder="E-posta adresiniz" required>
+                            <button type="submit" class="btn-secondary" data-i18n="footer.subscribe">Abone Ol</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Özyürek Şekerleme - <span data-i18n="footer.rights">Tüm Hakları Saklıdır</span></p>
+                <div class="payment-methods">
+                    <img src="img/payment-methods.png" alt="Ödeme Yöntemleri">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/i18n.js"></script>
+    <script src="js/site.js"></script>
+    <script src="js/product.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Özyürek Şekerleme - Geleneksel Türk Lokumu</title>
+    <meta name="description" content="Özyürek Şekerleme, en kaliteli Türk lokumları ve şekerlemeleri sunan geleneksel bir markadır.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link id="rtl-style" rel="stylesheet" href="">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Üst Menü -->
+    <header>
+        <div class="container">
+            <div class="top-bar">
+                <div class="language-selector">
+                    <button onclick="changeLanguage('tr')" class="lang-btn active" data-lang="tr">TR</button>
+                    <button onclick="changeLanguage('en')" class="lang-btn" data-lang="en">EN</button>
+                    <button onclick="changeLanguage('ar')" class="lang-btn" data-lang="ar">AR</button>
+                </div>
+                <div class="user-actions">
+                    <a href="login.html" class="btn-link" data-i18n="header.login">Giriş Yap</a>
+                    <a href="register.html" class="btn-link" data-i18n="header.register">Kayıt Ol</a>
+                    <a href="cart.html" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+            <div class="main-header">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="img/logo.png" alt="Özyürek Şekerleme Logo">
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <button class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <ul class="menu">
+                        <li><a href="index.html" class="active" data-i18n="menu.home">Ana Sayfa</a></li>
+                        <li><a href="products.html" data-i18n="menu.products">Ürünlerimiz</a></li>
+                        <li><a href="products.html?category=lokum" data-i18n="menu.turkish_delight">Türk Lokumu</a></li>
+                        <li><a href="products.html?category=sekerleme" data-i18n="menu.candy">Şekerleme</a></li>
+                        <li><a href="#about" data-i18n="menu.about">Hakkımızda</a></li>
+                        <li><a href="#contact" data-i18n="menu.contact">İletişim</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Ana Bölüm -->
+    <main>
+        <!-- Hero Banner -->
+        <section class="hero-banner">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 data-i18n="home.hero_title">Geleneksel Lezzetin Modern Sunumu</h1>
+                    <p data-i18n="home.hero_subtitle">Özyürek Şekerleme ile eşsiz Türk lokumu deneyimi</p>
+                    <a href="products.html" class="btn-primary" data-i18n="home.shop_now">Hemen Alışverişe Başla</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Öne Çıkan Ürünler -->
+        <section class="featured-products">
+            <div class="container">
+                <h2 class="section-title" data-i18n="home.featured_products">Öne Çıkan Ürünler</h2>
+                <div class="products-grid">
+                    <!-- Ürün Kartları JS ile doldurulacak -->
+                    <div class="product-loader">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kategoriler -->
+        <section class="categories">
+            <div class="container">
+                <h2 class="section-title" data-i18n="home.categories">Kategoriler</h2>
+                <div class="categories-grid">
+                    <div class="category-card">
+                        <img src="img/backgrounds/lokum-bg.jpg" alt="Türk Lokumu">
+                        <div class="category-content">
+                            <h3 data-i18n="categories.turkish_delight">Türk Lokumu</h3>
+                            <a href="products.html?category=lokum" class="btn-secondary" data-i18n="categories.view_products">Ürünleri Görüntüle</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <img src="img/backgrounds/sekerleme-bg.jpg" alt="Şekerleme">
+                        <div class="category-content">
+                            <h3 data-i18n="categories.candy">Şekerleme</h3>
+                            <a href="products.html?category=sekerleme" class="btn-secondary" data-i18n="categories.view_products">Ürünleri Görüntüle</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <img src="img/backgrounds/ozel-bg.jpg" alt="Özel Üretim">
+                        <div class="category-content">
+                            <h3 data-i18n="categories.special_production">Özel Üretim</h3>
+                            <a href="products.html?category=ozel" class="btn-secondary" data-i18n="categories.view_products">Ürünleri Görüntüle</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hakkımızda -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="img/backgrounds/about-bg.jpg" alt="Özyürek Şekerleme Hakkında">
+                    </div>
+                    <div class="about-text">
+                        <h2 class="section-title" data-i18n="about.title">Hakkımızda</h2>
+                        <p data-i18n="about.description">Özyürek Şekerleme, geleneksel Türk lokumu ve şekerleme kültürünü, yıllardır süregelen aile reçeteleriyle birleştirerek modern dünyaya sunmaktadır. En kaliteli malzemelerle, ustalıkla hazırlanan ürünlerimiz, geleneksel tatları sevenlerin vazgeçilmezi olmuştur.</p>
+                        <p data-i18n="about.mission">Misyonumuz, kültürel mirasımızı tüm dünyaya tanıtmak ve geleneksel lokum lezzetini uluslararası alanda temsil etmektir.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Müşteri Yorumları -->
+        <section class="testimonials">
+            <div class="container">
+                <h2 class="section-title" data-i18n="testimonials.title">Müşteri Yorumları</h2>
+                <div class="testimonials-slider">
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p data-i18n="testimonials.review1">"Özyürek'in lokumları gerçekten eşsiz. Yurtdışından gelen misafirlerime her zaman bu lezzeti hediye ediyorum."</p>
+                            <div class="testimonial-author">
+                                <strong data-i18n="testimonials.author1">Ahmet Y.</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p data-i18n="testimonials.review2">"Sipariş verdiğim şekerlemeler tam zamanında geldi. Ambalaj ve tazelik konusunda mükemmel."</p>
+                            <div class="testimonial-author">
+                                <strong data-i18n="testimonials.author2">Elif K.</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p data-i18n="testimonials.review3">"Antep fıstıklı lokum siparişim için teşekkürler, ailece bayıldık. Kesinlikle tekrar sipariş vereceğim."</p>
+                            <div class="testimonial-author">
+                                <strong data-i18n="testimonials.author3">Mehmet B.</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- İletişim -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title" data-i18n="contact.title">Bize Ulaşın</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p data-i18n="contact.address">İstanbul, Türkiye</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <p>+90 (212) 123 4567</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <p>info@ozyureksekerleme.com</p>
+                        </div>
+                        <div class="social-media">
+                            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name" data-i18n="contact.name">İsim</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" data-i18n="contact.email">E-posta</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message" data-i18n="contact.message">Mesaj</label>
+                                <textarea id="message" name="message" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary" data-i18n="contact.send">Gönder</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Alt Bilgi -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="img/logo.png" alt="Özyürek Şekerleme Logo">
+                    <p data-i18n="footer.tagline">Geleneksel lezzetin doğal hali</p>
+                </div>
+                <div class="footer-links">
+                    <h3 data-i18n="footer.quick_links">Hızlı Bağlantılar</h3>
+                    <ul>
+                        <li><a href="index.html" data-i18n="menu.home">Ana Sayfa</a></li>
+                        <li><a href="products.html" data-i18n="menu.products">Ürünlerimiz</a></li>
+                        <li><a href="#about" data-i18n="menu.about">Hakkımızda</a></li>
+                        <li><a href="#contact" data-i18n="menu.contact">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3 data-i18n="footer.categories">Kategoriler</h3>
+                    <ul>
+                        <li><a href="products.html?category=lokum" data-i18n="categories.turkish_delight">Türk Lokumu</a></li>
+                        <li><a href="products.html?category=sekerleme" data-i18n="categories.candy">Şekerleme</a></li>
+                        <li><a href="products.html?category=ozel" data-i18n="categories.special_production">Özel Üretim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3 data-i18n="footer.newsletter">Bültenimize Abone Olun</h3>
+                    <p data-i18n="footer.newsletter_info">Yeni ürünler ve özel teklifler için abone olun</p>
+                    <form id="newsletterForm">
+                        <div class="form-group">
+                            <input type="email" id="newsletter-email" name="email" placeholder="E-posta adresiniz" required>
+                            <button type="submit" class="btn-secondary" data-i18n="footer.subscribe">Abone Ol</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Özyürek Şekerleme - <span data-i18n="footer.rights">Tüm Hakları Saklıdır</span></p>
+                <div class="payment-methods">
+                    <img src="img/payment-methods.png" alt="Ödeme Yöntemleri">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/i18n.js"></script>
+    <script src="js/site.js"></script>
+    <script src="js/product.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>

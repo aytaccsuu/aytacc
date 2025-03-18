@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sipariş Tamamlama - Özyürek Şekerleme</title>
+    <meta name="description" content="Özyürek Şekerleme sipariş sayfası - ödeme ve teslimat bilgilerinizi girerek alışverişinizi tamamlayın.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link id="rtl-style" rel="stylesheet" href="">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Üst Menü -->
+    <header>
+        <div class="container">
+            <div class="top-bar">
+                <div class="language-selector">
+                    <button onclick="changeLanguage('tr')" class="lang-btn active" data-lang="tr">TR</button>
+                    <button onclick="changeLanguage('en')" class="lang-btn" data-lang="en">EN</button>
+                    <button onclick="changeLanguage('ar')" class="lang-btn" data-lang="ar">AR</button>
+                </div>
+                <div class="user-actions">
+                    <a href="login.html" class="btn-link" data-i18n="header.login">Giriş Yap</a>
+                    <a href="register.html" class="btn-link" data-i18n="header.register">Kayıt Ol</a>
+                    <a href="cart.html" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+            <div class="main-header">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="img/logo.png" alt="Özyürek Şekerleme Logo">
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <button class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <ul class="menu">
+                        <li><a href="index.html" data-i18n="menu.home">Ana Sayfa</a></li>
+                        <li><a href="products.html" data-i18n="menu.products">Ürünlerimiz</a></li>
+                        <li><a href="products.html?category=lokum" data-i18n="menu.turkish_delight">Türk Lokumu</a></li>
+                        <li><a href="products.html?category=sekerleme" data-i18n="menu.candy">Şekerleme</a></li>
+                        <li><a href="index.html#about" data-i18n="menu.about">Hakkımızda</a></li>
+                        <li><a href="index.html#contact" data-i18n="menu.contact">İletişim</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Ana Bölüm -->
+    <main>
+        <section class="checkout-section">
+            <div class="container">
+                <h1 class="page-title" data-i18n="checkout.title">Siparişi Tamamla</h1>
+                
+                <!-- Sipariş İlerleme Adımları -->
+                <div class="checkout-steps">
+                    <div class="step active" data-step="shipping">
+                        <div class="step-number">1</div>
+                        <div class="step-label" data-i18n="checkout.shipping_step">Teslimat</div>
+                    </div>
+                    <div class="step-divider"></div>
+                    <div class="step" data-step="payment">
+                        <div class="step-number">2</div>
+                        <div class="step-label" data-i18n="checkout.payment_step">Ödeme</div>
+                    </div>
+                    <div class="step-divider"></div>
+                    <div class="step" data-step="confirmation">
+                        <div class="step-number">3</div>
+                        <div class="step-label" data-i18n="checkout.confirmation_step">Onay</div>
+                    </div>
+                </div>
+
+                <!-- Teslimat ve Ödeme Formu -->
+                <div class="checkout-content">
+                    <div class="checkout-form-container">
+                        <!-- Teslimat Adresi Formu -->
+                        <div class="checkout-form active" id="shipping-form">
+                            <h2 data-i18n="checkout.shipping_address">Teslimat Adresi</h2>
+                            <form id="shipping-address-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="first-name" data-i18n="checkout.first_name">Ad</label>
+                                        <input type="text" id="first-name" name="first-name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="last-name" data-i18n="checkout.last_name">Soyad</label>
+                                        <input type="text" id="last-name" name="last-name" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" data-i18n="checkout.email">E-posta</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone" data-i18n="checkout.phone">Telefon</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address" data-i18n="checkout.address">Adres</label>
+                                    <textarea id="address" name="address" rows="2" required></textarea>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="city" data-i18n="checkout.city">Şehir</label>
+                                        <select id="city" name="city" required>
+                                            <option value="" data-i18n="checkout.select_city">Şehir Seçiniz</option>
+                                            <option value="istanbul">İstanbul</option>
+                                            <option value="ankara">Ankara</option>
+                                            <option value="izmir">İzmir</option>
+                                            <!-- Diğer şehirler JS ile eklenebilir -->
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="district" data-i18n="checkout.district">İlçe</label>
+                                        <select id="district" name="district" required>
+                                            <option value="" data-i18n="checkout.select_district">İlçe Seçiniz</option>
+                                            <!-- İlçeler JS ile dinamik olarak doldurulacak -->
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="postal-code" data-i18n="checkout.postal_code">Posta Kodu</label>
+                                    <input type="text" id="postal-code" name="postal-code" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="shipping-note" data-i18n="checkout.shipping_note">Teslimat Notu (Opsiyonel)</label>
+                                    <textarea id="shipping-note" name="shipping-note" rows="2"></textarea>
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <a href="cart.html" class="btn-link" data-i18n="checkout.back_to_cart">Sepete Geri Dön</a>
+                                    <button type="button" id="continue-to-payment" class="btn-primary" data-i18n="checkout.continue_to_payment">Ödemeye Geç</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Ödeme Formu -->
+                        <div class="checkout-form" id="payment-form">
+                            <h2 data-i18n="checkout.payment_method">Ödeme Yöntemi</h2>
+                            <form id="payment-method-form">
+                                <div class="payment-options">
+                                    <div class="payment-option">
+                                        <input type="radio" id="credit-card" name="payment-method" value="credit-card" checked>
+                                        <label for="credit-card">
+                                            <i class="fas fa-credit-card"></i>
+                                            <span data-i18n="checkout.credit_card">Kredi Kartı</span>
+                                        </label>
+                                    </div>
+                                    <div class="payment-option">
+                                        <input type="radio" id="cash-on-delivery" name="payment-method" value="cash-on-delivery">
+                                        <label for="cash-on-delivery">
+                                            <i class="fas fa-money-bill-wave"></i>
+                                            <span data-i18n="checkout.cash_on_delivery">Kapıda Nakit Ödeme</span>
+                                        </label>
+                                    </div>
+                                    <div class="payment-option">
+                                        <input type="radio" id="card-on-delivery" name="payment-method" value="card-on-delivery">
+                                        <label for="card-on-delivery">
+                                            <i class="fas fa-mobile-alt"></i>
+                                            <span data-i18n="checkout.card_on_delivery">Kapıda Kredi Kartı</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Kredi Kartı Formu (İyzico entegrasyonu için) -->
+                                <div class="credit-card-form" id="credit-card-form">
+                                    <div class="form-group">
+                                        <label for="card-holder" data-i18n="checkout.card_holder">Kart Sahibi</label>
+                                        <input type="text" id="card-holder" name="card-holder">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="card-number" data-i18n="checkout.card_number">Kart Numarası</label>
+                                        <input type="text" id="card-number" name="card-number" placeholder="**** **** **** ****">
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="expiry-date" data-i18n="checkout.expiry_date">Son Kullanma Tarihi</label>
+                                            <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cvv" data-i18n="checkout.cvv">CVV</label>
+                                            <input type="text" id="cvv" name="cvv" placeholder="***">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Şartlar ve Koşullar -->
+                                <div class="terms-acceptance">
+                                    <div class="form-checkbox">
+                                        <input type="checkbox" id="terms-accepted" name="terms-accepted" required>
+                                        <label for="terms-accepted">
+                                            <span data-i18n="checkout.terms_part1">Siparişi tamamlayarak</span> 
+                                            <a href="#" data-i18n="checkout.terms_link">şartlar ve koşulları</a> 
+                                            <span data-i18n="checkout.terms_part2">kabul etmiş olursunuz.</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="button" id="back-to-shipping" class="btn-secondary" data-i18n="checkout.back">Geri</button>
+                                    <button type="button" id="place-order" class="btn-primary" data-i18n="checkout.place_order">Siparişi Tamamla</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Sipariş Onay -->
+                        <div class="checkout-form" id="confirmation-form">
+                            <div class="order-confirmation">
+                                <div class="confirmation-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <h2 data-i18n="checkout.thank_you">Teşekkürler!</h2>
+                                <p data-i18n="checkout.order_received">Siparişiniz başarıyla alındı.</p>
+                                <div class="order-info">
+                                    <p><span data-i18n="checkout.order_number">Sipariş Numarası:</span> <strong id="order-number">#12345</strong></p>
+                                    <p><span data-i18n="checkout.order_date">Sipariş Tarihi:</span> <span id="order-date">18.03.2025</span></p>
+                                </div>
+                                <p data-i18n="checkout.confirmation_email">Siparişinizin detayları e-posta adresinize gönderilmiştir.</p>
+                                <div class="confirmation-actions">
+                                    <a href="index.html" class="btn-secondary" data-i18n="checkout.back_to_home">Ana Sayfaya Dön</a>
+                                    <button id="view-order" class="btn-primary" data-i18n="checkout.view_order">Siparişi Görüntüle</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sipariş Özeti -->
+                    <div class="order-summary-sidebar">
+                        <div class="order-summary-box">
+                            <h3 data-i18n="checkout.order_summary">Sipariş Özeti</h3>
+                            
+                            <div class="order-items" id="order-items">
+                                <!-- Sipariş öğeleri JS ile doldurulacak -->
+                                <div class="order-item-loader">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="summary-totals">
+                                <div class="summary-row">
+                                    <span data-i18n="checkout.subtotal">Ara Toplam</span>
+                                    <span id="checkout-subtotal">0.00 TL</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span data-i18n="checkout.shipping">Kargo</span>
+                                    <span id="checkout-shipping">0.00 TL</span>
+                                </div>
+                                <div class="summary-row discount-row" id="checkout-discount-row">
+                                    <span data-i18n="checkout.discount">İndirim</span>
+                                    <span id="checkout-discount">-0.00 TL</span>
+                                </div>
+                                <div class="summary-row total-row">
+                                    <span data-i18n="checkout.total">Genel Toplam</span>
+                                    <span id="checkout-total">0.00 TL</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="secure-checkout">
+                            <div class="secure-icons">
+                                <i class="fas fa-lock"></i>
+                                <i class="fab fa-cc-visa"></i>
+                                <i class="fab fa-cc-mastercard"></i>
+                                <i class="fab fa-cc-amex"></i>
+                            </div>
+                            <p data-i18n="checkout.secure_payment">Güvenli Ödeme</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Alt Bilgi -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="img/logo.png" alt="Özyürek Şekerleme Logo">
+                    <p data-i18n="footer.tagline">Geleneksel lezzetin doğal hali</p>
+                </div>
+                <div class="footer-links">
+                    <h3 data-i18n="footer.quick_links">Hızlı Bağlantılar</h3>
+                    <ul>
+                        <li><a href="index.html" data-i18n="menu.home">Ana Sayfa</a></li>
+                        <li><a href="products.html" data-i18n="menu.products">Ürünlerimiz</a></li>
+                        <li><a href="index.html#about" data-i18n="menu.about">Hakkımızda</a></li>
+                        <li><a href="index.html#contact" data-i18n="menu.contact">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3 data-i18n="footer.categories">Kategoriler</h3>
+                    <ul>
+                        <li><a href="products.html?category=lokum" data-i18n="categories.turkish_delight">Türk Lokumu</a></li>
+                        <li><a href="products.html?category=sekerleme" data-i18n="categories.candy">Şekerleme</a></li>
+                        <li><a href="products.html?category=ozel" data-i18n="categories.special_production">Özel Üretim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3 data-i18n="footer.newsletter">Bültenimize Abone Olun</h3>
+                    <p data-i18n="footer.newsletter_info">Yeni ürünler ve özel teklifler için abone olun</p>
+                    <form id="newsletterForm">
+                        <div class="form-group">
+                            <input type="email" id="newsletter-email" name="email" placeholder="E-posta adresiniz" required>
+                            <button type="submit" class="btn-secondary" data-i18n="footer.subscribe">Abone Ol</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Özyürek Şekerleme - <span data-i18n="footer.rights">Tüm Hakları Saklıdır</span></p>
+                <div class="payment-methods">
+                    <img src="img/payment-methods.png" alt="Ödeme Yöntemleri">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/i18n.js"></script>
+    <script src="js/site.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/payment.js"></script>
+</body>
+</html>

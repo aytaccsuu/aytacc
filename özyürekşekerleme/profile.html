@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hesabım - Özyürek Şekerleme</title>
+    <meta name="description" content="Özyürek Şekerleme hesap bilgilerinizi görüntüleyin ve yönetin.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link id="rtl-style" rel="stylesheet" href="">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Üst Menü -->
+    <header>
+        <div class="container">
+            <div class="top-bar">
+                <div class="language-selector">
+                    <button onclick="changeLanguage('tr')" class="lang-btn active" data-lang="tr">TR</button>
+                    <button onclick="changeLanguage('en')" class="lang-btn" data-lang="en">EN</button>
+                    <button onclick="changeLanguage('ar')" class="lang-btn" data-lang="ar">AR</button>
+                </div>
+                <div class="user-actions">
+                    <div class="user-dropdown">
+                        <button class="user-button">
+                            <i class="fas fa-user-circle"></i>
+                            <span id="user-name">Kullanıcı</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="user-dropdown-content">
+                            <a href="profile.html" class="active">
+                                <i class="fas fa-user"></i>
+                                <span data-i18n="header.my_account">Hesabım</span>
+                            </a>
+                            <a href="profile.html#orders">
+                                <i class="fas fa-box"></i>
+                                <span data-i18n="header.my_orders">Siparişlerim</span>
+                            </a>
+                            <a href="profile.html#addresses">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span data-i18n="header.my_addresses">Adreslerim</span>
+                            </a>
+                            <a href="#" id="logout-button">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span data-i18n="header.logout">Çıkış Yap</span>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="cart.html" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+            <div class="main-header">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="img/logo.png" alt="Özyürek Şekerleme Logo">
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <button class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <ul class="menu">
+                        <li><a href="index.html" data-i18n="menu.home">Ana Sayfa</a></li>
+                        <li><a href="products.html" data-i18n="menu.products">Ürünlerimiz</a></li>
+                        <li><a href="products.html?category=lokum" data-i18n="menu.turkish_delight">Türk Lokumu</a></li>
+                        <li><a href="products.html?category=sekerleme" data-i18n="menu.candy">Şekerleme</a></li>
+                        <li><a href="index.html#about" data-i18n="menu.about">Hakkımızda</a></li>
+                        <li><a href="index.html#contact" data-i18n="menu.contact">İletişim</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Ana Bölüm -->
+    <main>
+        <section class="profile-section">
+            <div class="container">
+                <h1 class="page-title" data-i18n="profile.title">Hesabım</h1>
+                
+                <div class="profile-container">
+                    <!-- Profil Menü -->
+                    <div class="profile-sidebar">
+                        <div class="profile-user">
+                            <div class="profile-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="profile-username" id="sidebar-username">Kullanıcı Adı</div>
+                            <div class="profile-email" id="sidebar-email">kullanici@email.com</div>
+                        </div>
+                        <ul class="profile-menu">
+                            <li>
+                                <a href="#dashboard" class="profile-menu-item active" data-tab="dashboard">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                    <span data-i18n="profile.dashboard">Genel Bakış</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#orders" class="profile-menu-item" data-tab="orders">
+                                    <i class="fas fa-box"></i>
+                                    <span data-i18n="profile.orders">Siparişlerim</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#addresses" class="profile-menu-item" data-tab="addresses">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span data-i18n="profile.addresses">Adreslerim</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#account" class="profile-menu-item" data-tab="account">
+                                    <i class="fas fa-user-edit"></i>
+                                    <span data-i18n="profile.account">Hesap Bilgilerim</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#password" class="profile-menu-item" data-tab="password">
+                                    <i class="fas fa-lock"></i>
+                                    <span data-i18n="profile.password">Şifre Değiştir</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" id="sidebar-logout" class="profile-menu-item">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <span data-i18n="profile.logout">Çıkış Yap</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Profil İçerik -->
+                    <div class="profile-content">
+                        <!-- Genel Bakış -->
+                        <div class="profile-tab active" id="dashboard">
+                            <h2 data-i18n="profile.welcome">Hoş Geldiniz!</h2>
+                            
+                            <div class="dashboard-stats">
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-box"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <div class="stat-value" id="total-orders">0</div>
+                                        <div class="stat-label" data-i18n="profile.total_orders">Toplam Sipariş</div>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-truck"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <div class="stat-value" id="active-orders">0</div>
+                                        <div class="stat-label" data-i18n="profile.active_orders">Aktif Sipariş</div>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <div class="stat-value" id="favorite-products">0</div>
+                                        <div class="stat-label" data-i18n="profile.favorite_products">Favori Ürün</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="dashboard-sections">
+                                <div class="dashboard-section">
+                                    <h3 data-i18n="profile.recent_orders">Son Siparişleriniz</h3>
+                                    <div class="recent-orders">
+                                        <!-- Son siparişler JS ile doldurulacak -->
+                                        <div id="recent-orders-container">
+                                            <p class="no-data" data-i18n="profile.no_orders">Henüz siparişiniz bulunmamaktadır.</p>
+                                        </div>
+                                        <a href="#orders" class="btn-link" data-i18n="profile.view_all_orders">Tüm Siparişleri Görüntüle</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Siparişlerim -->
+                        <div class="profile-tab" id="orders">
+                            <h2 data-i18n="profile.my_orders">Siparişlerim</h2>
+                            
+                            <div class="orders-filters">
+                                <div class="search-box">
+                                    <input type="text" id="order-search" placeholder="Sipariş Numarası Ara...">
+                                    <button id="order-search-btn">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="filter-dropdown">
+                                    <label for="order-filter" data-i18n="profile.filter_orders">Filtrele:</label>
+                                    <select id="order-filter">
+                                        <option value="all" data-i18n="profile.all_orders">Tüm Siparişler</option>
+                                        <option value="processing" data-i18n="profile.processing">İşleniyor</option>
+                                        <option value="shipped" data-i18n="profile.shipped">Kargoya Verildi</option>
+                                        <option value="delivered" data-i18n="profile.delivered">Teslim Edildi</option>
+                                        <option value="cancelled" data-i18n="profile.cancelled">İptal Edildi</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="orders-list" id="orders-list">
+                                <!-- Siparişler JS ile doldurulacak -->
+                                <div class="orders-loader">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </div>
+                                <div class="no-orders hidden">
+                                    <p data-i18n="profile.no_orders_found">Sipariş bulunamadı.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Sipariş Detay Modal -->
+                            <div class="modal" id="order-detail-modal">
+                                <div class="modal-content order-detail-modal">
+                                    <div class="modal-header">
+                                        <h3 data-i18n="profile.order_details">Sipariş Detayı</h3>
+                                        <button class="modal-close">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body" id="order-detail-content">
+                                        <!-- Sipariş detayı JS ile doldurulacak -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Adreslerim -->
+                        <div class="profile-tab" id="addresses">
+                            <div class="addresses-header">
+                                <h2 data-i18n="profile.my_addresses">Adreslerim</h2>
+                                <button id="add-address-btn" class="btn-primary">
+                                    <i class="fas fa-plus"></i>
+                                    <span data-i18n="profile.add_address">Adres Ekle</span>
+                                </button>
+                            </div>
+                            
+                            <div class="addresses-container" id="addresses-container">
+                                <!-- Adresler JS ile doldurulacak -->
+                                <div class="addresses-loader">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </div>
+                                <div class="no-addresses hidden">
+                                    <p data-i18n="profile.no_addresses">Kayıtlı adresiniz bulunmamaktadır.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Adres Ekleme Modal -->
+                            <div class="modal" id="address-modal">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 id="address-modal-title" data-i18n="profile.add_new_address">Yeni Adres Ekle</h3>
+                                        <button class="modal-close">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="address-form">
+                                            <input type="hidden" id="address-id">
+                                            <div class="form-group">
+                                                <label for="address-title" data-i18n="profile.address_title">Adres Başlığı</label>
+                                                <input type="text" id="address-title" name="title" required>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label for="address-firstname" data-i18n="profile.firstname">Ad</label>
+                                                    <input type="text" id="address-firstname" name="firstname" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="address-lastname" data-i18n="profile.lastname">Soyad</label>
+                                                    <input type="text" id="address-lastname" name="lastname" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="address-phone" data-i18n="profile.phone">Telefon</label>
+                                                <input type="tel" id="address-phone" name="phone" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="address-text" data-i18n="profile.address">Adres</label>
+                                                <textarea id="address-text" name="address" rows="3" required></textarea>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label for="address-city" data-i18n="profile.city">Şehir</label>
+                                                    <select id="address-city" name="city" required>
+                                                        <option value="" data-i18n="profile.select_city">Şehir Seçiniz</option>
+                                                        <!-- Şehirler JS ile doldurulacak -->
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="address-district" data-i18n="profile.district">İlçe</label>
+                                                    <select id="address-district" name="district" required>
+                                                        <option value="" data-i18n="profile.select_district">İlçe Seçiniz</option>
+                                                        <!-- İlçeler JS ile doldurulacak -->
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="address-postcode" data-i18n="profile.postal_code">Posta Kodu</label>
+                                                <input type="text" id="address-postcode" name="postcode" required>
+                                            </div>
+                                            <div class="form-checkbox">
+                                                <input type="checkbox" id="address-default" name="is_default">
+                                                <label for="address-default" data-i18n="profile.default_address">Varsayılan adres olarak ayarla</label>
+                                            </div>
+                                            <div class="form-actions modal-actions">
+                                                <button type="button" class="btn-secondary modal-cancel" data-i18n="profile.cancel">İptal</button>
+                                                <button type="submit" class="btn-primary" data-i18n="profile.save_address">Adresi Kaydet</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Hesap Bilgilerim -->
+                        <div class="profile-tab" id="account">
+                            <h2 data-i18n="profile.account_info">Hesap Bilgilerim</h2>
+                            
+                            <form id="account-form" class="profile-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="account-firstname" data-i18n="profile.firstname">Ad</label>
+                                        <input type="text" id="account-firstname" name="firstname" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="account-lastname" data-i18n="profile.lastname">Soyad</label>
+                                        <input type="text" id="account-lastname" name="lastname" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="account-email" data-i18n="profile.email">E-posta</label>
+                                    <input type="email" id="account-email" name="email" required readonly>
+                                    <small data-i18n="profile.email_change_note">E-posta adresinizi değiştirmek için lütfen müşteri hizmetleri ile iletişime geçin.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="account-phone" data-i18n="profile.phone">Telefon</label>
+                                    <input type="tel" id="account-phone" name="phone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="account-birthdate" data-i18n="profile.birthdate">Doğum Tarihi</label>
+                                    <input type="date" id="account-birthdate" name="birthdate">
+                                </div>
+                                <div class="form-group">
+                                    <label for="account-gender" data-i18n="profile.gender">Cinsiyet</label>
+                                    <select id="account-gender" name="gender">
+                                        <option value="" data-i18n="profile.gender_select">Seçiniz</option>
+                                        <option value="male" data-i18n="profile.gender_male">Erkek</option>
+                                        <option value="female" data-i18n="profile.gender_female">Kadın</option>
+                                        <option value="other" data-i18n="profile.gender_other">Diğer</option>
+                                    </select>
+                                </div>
+                                <div class="form-checkbox">
+                                    <input type="checkbox" id="account-newsletter" name="newsletter">
+                                    <label for="account-newsletter" data-i18n="profile.newsletter">Kampanya ve fırsatlardan haberdar olmak istiyorum.</label>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn-primary" data-i18n="profile.save_changes">Değişiklikleri Kaydet</button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- Şifre Değiştir -->
+                        <div class="profile-tab" id="password">
+                            <h2 data-i18n="profile.change_password">Şifre Değiştir</h2>
+                            
+                            <form id="password-form" class="profile-form">
+                                <div class="form-group">
+                                    <label for="current-password" data-i18n="profile.current_password">Mevcut Şifre</label>
+                                    <div class="input-icon">
+                                        <input type="password" id="current-password" name="current_password" required>
+                                        <button type="button" class="toggle-password">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="new-password" data-i18n="profile.new_password">Yeni Şifre</label>
+                                    <div class="input-icon">
+                                        <input type="password" id="new-password" name="new_password" required>
+                                        <button type="button" class="toggle-password">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="password-strength">
+                                        <div class="strength-bar">
+                                            <div class="strength-indicator" style="width: 0%;"></div>
+                                        </div>
+                                        <div class="strength-text" data-i18n="profile.password_strength">Şifre Gücü: Zayıf</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm-password" data-i18n="profile.confirm_password">Şifre Tekrar</label>
+                                    <div class="input-icon">
+                                        <input type="password" id="confirm-password" name="confirm_password" required>
+                                        <button type="button" class="toggle-password">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn-primary" data-i18n="profile.update_password">Şifreyi Güncelle</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Alt Bilgi -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="img/logo.png" alt="Özyürek Şekerleme Logo">
+                    <p data-i18n="footer.tagline">Geleneksel lezzetin doğal hali</p>
+                </div>
+                <div class="footer-links">
+                    <h3 data-i18n="footer.quick_links">Hızlı Bağlantılar</h3>
+                    <ul>
+                        <li><a href="index.html" data-i18n="menu.home">Ana Sayfa</a></li>
+                        <li><a href="products.html" data-i18n="menu.products">Ürünlerimiz</a></li>
+                        <li><a href="index.html#about" data-i18n="menu.about">Hakkımızda</a></li>
+                        <li><a href="index.html#contact" data-i18n="menu.contact">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3 data-i18n="footer.categories">Kategoriler</h3>
+                    <ul>
+                        <li><a href="products.html?category=lokum" data-i18n="categories.turkish_delight">Türk Lokumu</a></li>
+                        <li><a href="products.html?category=sekerleme" data-i18n="categories.candy">Şekerleme</a></li>
+                        <li><a href="products.html?category=ozel" data-i18n="categories.special_production">Özel Üretim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3 data-i18n="footer.newsletter">Bültenimize Abone Olun</h3>
+                    <p data-i18n="footer.newsletter_info">Yeni ürünler ve özel teklifler için abone olun</p>
+                    <form id="newsletterForm">
+                        <div class="form-group">
+                            <input type="email" id="newsletter-email" name="email" placeholder="E-posta adresiniz" required>
+                            <button type="submit" class="btn-secondary" data-i18n="footer.subscribe">Abone Ol</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Özyürek Şekerleme - <span data-i18n="footer.rights">Tüm Hakları Saklıdır</span></p>
+                <div class="payment-methods">
+                    <img src="img/payment-methods.png" alt="Ödeme Yöntemleri">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/i18n.js"></script>
+    <script src="js/site.js"></script>
+    <script src="js/user.js"></script>
+</body>
+</html>

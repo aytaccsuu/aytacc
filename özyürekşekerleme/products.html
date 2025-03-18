@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ürünlerimiz - Özyürek Şekerleme</title>
+    <meta name="description" content="Özyürek Şekerleme'nin geleneksel Türk lokumu ve şekerleme ürünleri">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link id="rtl-style" rel="stylesheet" href="">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Üst Menü -->
+    <header>
+        <div class="container">
+            <div class="top-bar">
+                <div class="language-selector">
+                    <button onclick="changeLanguage('tr')" class="lang-btn active" data-lang="tr">TR</button>
+                    <button onclick="changeLanguage('en')" class="lang-btn" data-lang="en">EN</button>
+                    <button onclick="changeLanguage('ar')" class="lang-btn" data-lang="ar">AR</button>
+                </div>
+                <div class="user-actions">
+                    <a href="login.html" class="btn-link" data-i18n="header.login">Giriş Yap</a>
+                    <a href="register.html" class="btn-link" data-i18n="header.register">Kayıt Ol</a>
+                    <a href="cart.html" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+            <div class="main-header">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="img/logo.png" alt="Özyürek Şekerleme Logo">
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <button class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <ul class="menu">
+                        <li><a href="index.html" data-i18n="menu.home">Ana Sayfa</a></li>
+                        <li><a href="products.html" class="active" data-i18n="menu.products">Ürünlerimiz</a></li>
+                        <li><a href="products.html?category=lokum" data-i18n="menu.turkish_delight">Türk Lokumu</a></li>
+                        <li><a href="products.html?category=sekerleme" data-i18n="menu.candy">Şekerleme</a></li>
+                        <li><a href="index.html#about" data-i18n="menu.about">Hakkımızda</a></li>
+                        <li><a href="index.html#contact" data-i18n="menu.contact">İletişim</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Ana Bölüm -->
+    <main>
+        <!-- Ürün Kategorisi Banner -->
+        <section class="category-banner">
+            <div class="container">
+                <h1 id="category-title" data-i18n="products.all_products">Tüm Ürünlerimiz</h1>
+                <div class="breadcrumb">
+                    <a href="index.html" data-i18n="menu.home">Ana Sayfa</a> / 
+                    <span id="current-category" data-i18n="products.all_products">Tüm Ürünlerimiz</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ürün Listesi -->
+        <section class="products-section">
+            <div class="container">
+                <div class="products-layout">
+                    <!-- Yan Filtreler -->
+                    <aside class="filters">
+                        <div class="filter-box">
+                            <h3 data-i18n="products.categories">Kategoriler</h3>
+                            <ul class="category-filter">
+                                <li>
+                                    <a href="products.html" class="active" data-category="all" data-i18n="products.all_products">Tüm Ürünler</a>
+                                </li>
+                                <li>
+                                    <a href="products.html?category=lokum" data-category="lokum" data-i18n="categories.turkish_delight">Türk Lokumu</a>
+                                </li>
+                                <li>
+                                    <a href="products.html?category=sekerleme" data-category="sekerleme" data-i18n="categories.candy">Şekerleme</a>
+                                </li>
+                                <li>
+                                    <a href="products.html?category=ozel" data-category="ozel" data-i18n="categories.special_production">Özel Üretim</a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="filter-box">
+                            <h3 data-i18n="products.price_range">Fiyat Aralığı</h3>
+                            <div class="price-slider">
+                                <div class="price-inputs">
+                                    <input type="number" id="min-price" class="price-input" placeholder="Min" min="0">
+                                    <span>-</span>
+                                    <input type="number" id="max-price" class="price-input" placeholder="Max">
+                                </div>
+                                <button id="apply-price" class="btn-secondary" data-i18n="products.apply">Uygula</button>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <!-- Ürün Ana İçerik -->
+                    <div class="products-content">
+                        <div class="products-header">
+                            <div class="product-count">
+                                <span id="product-total">0</span> <span data-i18n="products.products_found">ürün bulundu</span>
+                            </div>
+                            <div class="product-sort">
+                                <label for="sort-by" data-i18n="products.sort_by">Sırala:</label>
+                                <select id="sort-by" class="sort-select">
+                                    <option value="recommended" data-i18n="products.recommended">Önerilen</option>
+                                    <option value="price-low" data-i18n="products.price_low">Fiyat (Düşükten Yükseğe)</option>
+                                    <option value="price-high" data-i18n="products.price_high">Fiyat (Yüksekten Düşüğe)</option>
+                                    <option value="newest" data-i18n="products.newest">En Yeniler</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="products-grid" id="products-container">
+                            <!-- Ürün Kartları JS ile doldurulacak -->
+                            <div class="product-loader">
+                                <i class="fas fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+
+                        <!-- Sayfalama -->
+                        <div class="pagination" id="pagination">
+                            <!-- Sayfalama JS ile doldurulacak -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Alt Bilgi -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="img/logo.png" alt="Özyürek Şekerleme Logo">
+                    <p data-i18n="footer.tagline">Geleneksel lezzetin doğal hali</p>
+                </div>
+                <div class="footer-links">
+                    <h3 data-i18n="footer.quick_links">Hızlı Bağlantılar</h3>
+                    <ul>
+                        <li><a href="index.html" data-i18n="menu.home">Ana Sayfa</a></li>
+                        <li><a href="products.html" data-i18n="menu.products">Ürünlerimiz</a></li>
+                        <li><a href="index.html#about" data-i18n="menu.about">Hakkımızda</a></li>
+                        <li><a href="index.html#contact" data-i18n="menu.contact">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3 data-i18n="footer.categories">Kategoriler</h3>
+                    <ul>
+                        <li><a href="products.html?category=lokum" data-i18n="categories.turkish_delight">Türk Lokumu</a></li>
+                        <li><a href="products.html?category=sekerleme" data-i18n="categories.candy">Şekerleme</a></li>
+                        <li><a href="products.html?category=ozel" data-i18n="categories.special_production">Özel Üretim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3 data-i18n="footer.newsletter">Bültenimize Abone Olun</h3>
+                    <p data-i18n="footer.newsletter_info">Yeni ürünler ve özel teklifler için abone olun</p>
+                    <form id="newsletterForm">
+                        <div class="form-group">
+                            <input type="email" id="newsletter-email" name="email" placeholder="E-posta adresiniz" required>
+                            <button type="submit" class="btn-secondary" data-i18n="footer.subscribe">Abone Ol</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Özyürek Şekerleme - <span data-i18n="footer.rights">Tüm Hakları Saklıdır</span></p>
+                <div class="payment-methods">
+                    <img src="img/payment-methods.png" alt="Ödeme Yöntemleri">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/i18n.js"></script>
+    <script src="js/site.js"></script>
+    <script src="js/product.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>

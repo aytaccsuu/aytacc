@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap - Özyürek Şekerleme</title>
+    <meta name="description" content="Özyürek Şekerleme hesabınıza giriş yapın ve özel tekliflerden yararlanın.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link id="rtl-style" rel="stylesheet" href="">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Üst Menü -->
+    <header>
+        <div class="container">
+            <div class="top-bar">
+                <div class="language-selector">
+                    <button onclick="changeLanguage('tr')" class="lang-btn active" data-lang="tr">TR</button>
+                    <button onclick="changeLanguage('en')" class="lang-btn" data-lang="en">EN</button>
+                    <button onclick="changeLanguage('ar')" class="lang-btn" data-lang="ar">AR</button>
+                </div>
+                <div class="user-actions">
+                    <a href="login.html" class="btn-link active" data-i18n="header.login">Giriş Yap</a>
+                    <a href="register.html" class="btn-link" data-i18n="header.register">Kayıt Ol</a>
+                    <a href="cart.html" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+            <div class="main-header">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="img/logo.png" alt="Özyürek Şekerleme Logo">
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <button class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <ul class="menu">
+                        <li><a href="index.html" data-i18n="menu.home">Ana Sayfa</a></li>
+                        <li><a href="products.html" data-i18n="menu.products">Ürünlerimiz</a></li>
+                        <li><a href="products.html?category=lokum" data-i18n="menu.turkish_delight">Türk Lokumu</a></li>
+                        <li><a href="products.html?category=sekerleme" data-i18n="menu.candy">Şekerleme</a></li>
+                        <li><a href="index.html#about" data-i18n="menu.about">Hakkımızda</a></li>
+                        <li><a href="index.html#contact" data-i18n="menu.contact">İletişim</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Ana Bölüm -->
+    <main>
+        <section class="auth-section">
+            <div class="container">
+                <div class="auth-container">
+                    <div class="auth-box">
+                        <div class="auth-header">
+                            <h1 data-i18n="login.title">Giriş Yap</h1>
+                            <p data-i18n="login.subtitle">Hesabınıza giriş yaparak siparişlerinizi takip edebilir ve daha hızlı alışveriş yapabilirsiniz.</p>
+                        </div>
+                        
+                        <!-- Giriş Formu -->
+                        <form id="login-form" class="auth-form">
+                            <div class="form-group">
+                                <label for="login-email" data-i18n="login.email">E-posta</label>
+                                <div class="input-icon">
+                                    <i class="fas fa-envelope"></i>
+                                    <input type="email" id="login-email" name="email" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="login-password" data-i18n="login.password">Şifre</label>
+                                <div class="input-icon">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" id="login-password" name="password" required>
+                                    <button type="button" class="toggle-password">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="form-options">
+                                <div class="form-checkbox">
+                                    <input type="checkbox" id="remember-me" name="remember-me">
+                                    <label for="remember-me" data-i18n="login.remember_me">Beni Hatırla</label>
+                                </div>
+                                <a href="#" class="forgot-password" data-i18n="login.forgot_password">Şifremi Unuttum</a>
+                            </div>
+                            
+                            <!-- Giriş Butonu -->
+                            <button type="submit" class="btn-primary btn-full" data-i18n="login.login_button">Giriş Yap</button>
+                            
+                            <!-- Giriş Yanıt Mesajı (Hata/Başarı) -->
+                            <div class="auth-message" id="login-message"></div>
+                            
+                            <!-- Sosyal Medya ile Giriş -->
+                            <div class="social-login">
+                                <div class="separator">
+                                    <span data-i18n="login.or">veya</span>
+                                </div>
+                                <div class="social-buttons">
+                                    <button type="button" class="social-button google">
+                                        <i class="fab fa-google"></i>
+                                        <span data-i18n="login.google">Google ile Giriş Yap</span>
+                                    </button>
+                                    <button type="button" class="social-button facebook">
+                                        <i class="fab fa-facebook-f"></i>
+                                        <span data-i18n="login.facebook">Facebook ile Giriş Yap</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <!-- Kayıt Olma Yönlendirmesi -->
+                        <div class="auth-footer">
+                            <p>
+                                <span data-i18n="login.no_account">Hesabınız yok mu?</span>
+                                <a href="register.html" data-i18n="login.register_now">Hemen Kayıt Olun</a>
+                            </p>
+                        </div>
+
+                        <!-- Admin Girişi -->
+                        <div class="admin-login-link">
+                            <a href="#" id="admin-login-toggle" data-i18n="login.admin_login">Yönetici Girişi</a>
+                        </div>
+                        
+                        <!-- Admin Giriş Formu (Gizli) -->
+                        <form id="admin-login-form" class="auth-form hidden">
+                            <div class="auth-header">
+                                <h2 data-i18n="login.admin_title">Yönetici Girişi</h2>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="admin-email" data-i18n="login.admin_email">Yönetici E-posta</label>
+                                <div class="input-icon">
+                                    <i class="fas fa-envelope"></i>
+                                    <input type="email" id="admin-email" name="admin-email" placeholder="aytaccsu1@gmail.com" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="admin-password" data-i18n="login.admin_password">Yönetici Şifre</label>
+                                <div class="input-icon">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" id="admin-password" name="admin-password" required>
+                                    <button type="button" class="toggle-password">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn-primary btn-full" data-i18n="login.admin_login_button">Yönetici Girişi</button>
+                            
+                            <!-- Admin Giriş Yanıt Mesajı -->
+                            <div class="auth-message" id="admin-login-message"></div>
+                            
+                            <div class="admin-back">
+                                <a href="#" id="back-to-user-login" data-i18n="login.back_to_user">Kullanıcı Girişine Dön</a>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="auth-banner">
+                        <div class="auth-banner-content">
+                            <h2 data-i18n="login.banner_title">Özyürek Şekerleme'ye Hoş Geldiniz</h2>
+                            <p data-i18n="login.banner_description">Geleneksel Türk lokumu ve şekerleme lezzetlerini keşfetmek için giriş yapın.</p>
+                            <div class="auth-banner-image">
+                                <img src="img/backgrounds/login-banner.jpg" alt="Özyürek Şekerleme">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Alt Bilgi -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="img/logo.png" alt="Özyürek Şekerleme Logo">
+                    <p data-i18n="footer.tagline">Geleneksel lezzetin doğal hali</p>
+                </div>
+                <div class="footer-links">
+                    <h3 data-i18n="footer.quick_links">Hızlı Bağlantılar</h3>
+                    <ul>
+                        <li><a href="index.html" data-i18n="menu.home">Ana Sayfa</a></li>
+                        <li><a href="products.html" data-i18n="menu.products">Ürünlerimiz</a></li>
+                        <li><a href="index.html#about" data-i18n="menu.about">Hakkımızda</a></li>
+                        <li><a href="index.html#contact" data-i18n="menu.contact">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3 data-i18n="footer.categories">Kategoriler</h3>
+                    <ul>
+                        <li><a href="products.html?category=lokum" data-i18n="categories.turkish_delight">Türk Lokumu</a></li>
+                        <li><a href="products.html?category=sekerleme" data-i18n="categories.candy">Şekerleme</a></li>
+                        <li><a href="products.html?category=ozel" data-i18n="categories.special_production">Özel Üretim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3 data-i18n="footer.newsletter">Bültenimize Abone Olun</h3>
+                    <p data-i18n="footer.newsletter_info">Yeni ürünler ve özel teklifler için abone olun</p>
+                    <form id="newsletterForm">
+                        <div class="form-group">
+                            <input type="email" id="newsletter-email" name="email" placeholder="E-posta adresiniz" required>
+                            <button type="submit" class="btn-secondary" data-i18n="footer.subscribe">Abone Ol</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Özyürek Şekerleme - <span data-i18n="footer.rights">Tüm Hakları Saklıdır</span></p>
+                <div class="payment-methods">
+                    <img src="img/payment-methods.png" alt="Ödeme Yöntemleri">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/i18n.js"></script>
+    <script src="js/site.js"></script>
+    <script src="js/user.js"></script>
+</body>
+</html>

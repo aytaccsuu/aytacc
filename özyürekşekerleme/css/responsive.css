@@ -1,0 +1,412 @@
+/* ==========================================================================
+   Özyürek Şekerleme E-Ticaret Sitesi Duyarlı Tasarım Stil Dosyası
+   ========================================================================== */
+
+/* ==========================================================================
+   Büyük Masaüstü Ekranlar (1200px üstü)
+   ========================================================================== */
+
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+    
+    .product-image {
+        height: 24rem;
+    }
+    
+    .main-image img {
+        height: 50rem;
+    }
+}
+
+/* ==========================================================================
+   Normal Masaüstü Ekranlar (992px - 1199px)
+   ========================================================================== */
+
+@media (max-width: 1199px) {
+    html {
+        font-size: 60%;
+    }
+    
+    .container {
+        max-width: 960px;
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4rem;
+    }
+    
+    .dashboard-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .dashboard-charts,
+    .dashboard-tables {
+        grid-template-columns: 1fr;
+    }
+    
+    .admin-content {
+        padding: 1.5rem;
+    }
+}
+
+/* ==========================================================================
+   Tablet Ekranlar (768px - 991px)
+   ========================================================================== */
+
+@media (max-width: 991px) {
+    html {
+        font-size: 58%;
+    }
+    
+    .container {
+        max-width: 720px;
+    }
+    
+    .menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: white;
+        box-shadow: var(--shadow);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem 0;
+        z-index: 100;
+    }
+    
+    .menu.show {
+        display: flex;
+    }
+    
+    .menu li {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .menu a {
+        display: block;
+        padding: 1.2rem 2rem;
+        width: 100%;
+    }
+    
+    .menu a::after {
+        display: none;
+    }
+    
+    .menu a:hover,
+    .menu a.active {
+        background-color: #f9f9f9;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .categories-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .testimonials-slider {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .products-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .filters {
+        margin-bottom: 3rem;
+    }
+    
+    .product-detail {
+        grid-template-columns: 1fr;
+    }
+    
+    .product-gallery {
+        margin-bottom: 3rem;
+    }
+    
+    .cart-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .cart-header {
+        grid-template-columns: 2fr 1fr 1fr 0.5fr;
+    }
+    
+    .cart-item {
+        grid-template-columns: 2fr 1fr 1fr 0.5fr;
+    }
+    
+    .cart-column.price-column {
+        display: none;
+    }
+    
+    .checkout-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .order-summary-sidebar {
+        margin-top: 3rem;
+    }
+    
+    .auth-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .auth-banner {
+        display: none;
+    }
+    
+    .profile-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .profile-sidebar {
+        position: sticky;
+        top: 2rem;
+    }
+    
+    .admin-sidebar {
+        width: 0;
+        overflow: hidden;
+        transition: width var(--transition-speed);
+    }
+    
+    .admin-sidebar.show {
+        width: 25rem;
+    }
+    
+    .admin-content {
+        margin-left: 0;
+    }
+    
+    .addresses-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================================
+   Büyük Mobil Ekranlar (576px - 767px)
+   ========================================================================== */
+
+@media (max-width: 767px) {
+    html {
+        font-size: 56%;
+    }
+    
+    .container {
+        max-width: 540px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .product-tabs .tab-btn {
+        padding: 1rem;
+        font-size: 1.4rem;
+    }
+    
+    .reviews-summary {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    
+    .top-bar {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .cart-actions {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .cart-actions button {
+        width: 100%;
+    }
+    
+    .form-row {
+        flex-direction: column;
+    }
+    
+    .form-row > .form-group {
+        flex: 0 0 100%;
+    }
+    
+    .auth-box {
+        padding: 3rem 2rem;
+    }
+    
+    .dashboard-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .form-tab {
+        flex: 1 0 50%;
+    }
+}
+
+/* ==========================================================================
+   Mobil Ekranlar (575px altı)
+   ========================================================================== */
+
+@media (max-width: 575px) {
+    html {
+        font-size: 54%;
+    }
+    
+    .container {
+        width: 100%;
+        padding: 0 1.5rem;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-content h1 {
+        font-size: 3.6rem;
+    }
+    
+    .cart-header {
+        display: none;
+    }
+    
+    .cart-item {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .cart-product {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .cart-product-image {
+        margin-right: 0;
+        margin-bottom: 1.5rem;
+    }
+    
+    .cart-quantity,
+    .cart-total,
+    .cart-remove {
+        justify-self: flex-start;
+    }
+    
+    .checkout-steps {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .step-divider {
+        width: 2px;
+        height: 2rem;
+    }
+    
+    .social-buttons {
+        grid-template-columns: 1fr;
+    }
+    
+    .product-tabs .tabs-header {
+        flex-wrap: wrap;
+    }
+    
+    .product-tabs .tab-btn {
+        flex: 1 0 50%;
+        text-align: center;
+    }
+    
+    .cart-header, 
+    .cart-item {
+        padding: 1.5rem;
+    }
+    
+    .order-summary {
+        padding: 1.5rem;
+    }
+    
+    .checkout-form-container {
+        padding: 2rem;
+    }
+    
+    .admin-panel {
+        margin-bottom: 1.5rem;
+    }
+    
+    .panel-header {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: flex-start;
+    }
+    
+    .filter-bar {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: flex-start;
+    }
+    
+    .filter-options {
+        width: 100%;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .filter-item {
+        width: 100%;
+    }
+    
+    .filter-item label {
+        min-width: 8rem;
+    }
+    
+    .admin-table {
+        font-size: 1.4rem;
+    }
+    
+    .admin-table th,
+    .admin-table td {
+        padding: 0.8rem;
+    }
+    
+    .translation-toolbar {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .search-box {
+        width: 100%;
+    }
+}
