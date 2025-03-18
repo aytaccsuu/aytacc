@@ -19,6 +19,22 @@ const siteConfig = {
  * Sayfanın ilk yüklenişinde çalışacak fonksiyon
  */
 document.addEventListener('DOMContentLoaded', () => {
+    // Kaydedilmiş dil ayarını kontrol et
+    const savedLang = localStorage.getItem('lang') || 'tr';
+    
+    // Sayfa yüklendiğinde dil ayarlarını uygula
+    i18n.changeLang(savedLang);
+    
+    // Dil değişikliği olayını dinle
+    document.addEventListener('languageChanged', function() {
+        // Dinamik içerikleri güncelle (ürünler, sepet vb.)
+        if (typeof updateDynamicContent === 'function') {
+            updateDynamicContent();
+        }
+        // Sayfa içeriğini çevir
+        i18n.translatePage();
+    });
+
     // Mobil menü butonuna tıklama olayı ekle
     initMobileMenu();
     
@@ -45,6 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Scroll olayları
     initScrollEvents();
+
+    // Sepeti güncelle
+    cart.updateCartUI();
 });
 
 /**
@@ -925,150 +944,71 @@ function initQuantitySelectors() {
  * Giriş sayfası işlevleri
  */
 function initLoginPage() {
-    // Admin giriş formunu göster/gizle
-    const adminLoginToggle = document.getElementById('admin-login-toggle');
+    const loginForm = document.getElementById('login-form');
     const adminLoginForm = document.getElementById('admin-login-form');
-    const userLoginForm = document.getElementById('login-form');
-    const backToUserLogin = document.getElementById('back-to-user-login');
-    
-    if (adminLoginToggle && adminLoginForm && userLoginForm) {
-        adminLoginToggle.addEventListener('click', (e) => {
+
+    // Kullanıcı giriş formu
+    if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            userLoginForm.classList.add('hidden');
-            adminLoginForm.classList.remove('hidden');
+
+            const formData = new FormData(loginForm);
+
+            fetch('login.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = data.redirect;
+                } else {
+                    showLoginError(loginForm, data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Login error:', error);
+                showLoginError(loginForm, 'Bir hata oluştu. Lütfen tekrar deneyin.');
+            });
         });
     }
-    
-    if (backToUserLogin && adminLoginForm && userLoginForm) {
-        backToUserLogin.addEventListener('click', (e) => {
+
+    // Admin giriş formu
+    if (adminLoginForm) {
+        adminLoginForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            adminLoginForm.classList.add('hidden');
-            userLoginForm.classList.remove('hidden');
-        });
-    }
-}
 
-/**
- * Form doğrulama
- * @param {HTMLElement} form - Doğrulanacak form
- * @returns {boolean} - Form geçerli mi?
- */
-function validateForm(form) {
-    let isValid = true;
-    
-    // Tüm gerekli alanları kontrol et
-    const requiredFields = form.querySelectorAll('[required]');
-    requiredFields.forEach(field => {
-        if (!field.value.trim()) {
-            isValid = false;
-            highlightInvalidField(field);
-        } else {
-            removeInvalidHighlight(field);
-        }
-    });
-    
-    return isValid;
-}
+            const formData = new FormData(adminLoginForm);
 
-/**
- * Kaydırma olayları
- */
-function initScrollEvents() {
-    // Sayfa içi bağlantılar için yumuşak kaydırma
-    const inPageLinks = document.querySelectorAll('a[href^="#"]:not([href="#"])');
-    
-    inPageLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            const targetId = link.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-            
-            if (targetElement) {
-                e.preventDefault();
-                
-                // Yumuşak kaydırma
-                window.scrollTo({
-                    top: targetElement.offsetTop - 100, // Başlık çubuğu için offset
-                    behavior: 'smooth'
-                });
-                
-                // URL'yi güncelle
-                window.history.pushState({}, '', `#${targetId}`);
-            }
-        });
-    });
-    
-    // Geri Yukarı butonu
-    const backToTopButton = document.querySelector('.back-to-top');
-    
-    if (backToTopButton) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopButton.classList.add('show');
-            } else {
-                backToTopButton.classList.remove('show');
-            }
-        });
-        
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+            fetch('admin_login.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = data.redirect;
+                } else {
+                    showLoginError(adminLoginForm, data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Admin login error:', error);
+                showLoginError(adminLoginForm, 'Bir hata oluştu. Lütfen tekrar deneyin.');
             });
         });
     }
 }
 
-/**
- * Para birimini formatla
- * @param {number} amount - Formatlanacak miktar
- * @param {string} language - Dil kodu ('tr', 'en', 'ar')
- * @returns {string} - Formatlanmış para birimi
- */
-function formatCurrency(amount, language = 'tr') {
-    const currencySymbol = siteConfig.currency[language] || '₺';
-    
-    // Binlik ayraçları ve ondalık nokta formatı
-    const formattedAmount = amount.toLocaleString(
-        language === 'tr' ? 'tr-TR' : (language === 'en' ? 'en-US' : 'ar-SA'),
-        { minimumFractionDigits: 2, maximumFractionDigits: 2 }
-    );
-    
-    // Para birimi konumu
-    return language === 'ar' ? `${formattedAmount} ${currencySymbol}` : `${currencySymbol}${formattedAmount}`;
-}
-
-/**
- * Sepet sayacını güncelle
- * @param {number} count - Sepetteki öğe sayısı
- */
-function updateCartCount(count) {
-    const cartCountElements = document.querySelectorAll('.cart-count');
-    
-    cartCountElements.forEach(element => {
-        element.textContent = count;
-        
-        // Eğer sayı 0 ise gizle, değilse göster
-        if (count === 0) {
-            element.classList.add('hidden');
-        } else {
-            element.classList.remove('hidden');
-        }
+// Sepete ekle butonlarına olay dinleyicisi ekle
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+        const productId = button.dataset.productId;
+        const quantity = document.querySelector(`#quantity-${productId}`)?.value || 1;
+        cart.add(productId, quantity);
     });
-}
-
-/**
- * Ürün fiyatını ağırlığa göre hesapla
- * @param {number} basePrice - Temel ürün fiyatı
- * @param {number} weight - Seçilen ağırlık (gram)
- * @returns {number} - Hesaplanan fiyat
- */
-function calculatePriceByWeight(basePrice, weight) {
-    // Varsayılan ağırlık 250g
-    const defaultWeight = 250;
-    
-    // Orantısal hesaplama
-    return basePrice * (weight / defaultWeight);
-}
+});
 
 // Global işlevleri dışa aktar
 window.formatCurrency = formatCurrency;

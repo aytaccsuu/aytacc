@@ -17,13 +17,13 @@
         <div class="container">
             <div class="top-bar">
                 <div class="language-selector">
-                    <button onclick="changeLanguage('tr')" class="lang-btn active" data-lang="tr">TR</button>
-                    <button onclick="changeLanguage('en')" class="lang-btn" data-lang="en">EN</button>
-                    <button onclick="changeLanguage('ar')" class="lang-btn" data-lang="ar">AR</button>
+                    <button class="lang-btn" data-lang="tr" onclick="i18n.changeLanguage('tr')">TR</button>
+                    <button class="lang-btn" data-lang="en" onclick="i18n.changeLanguage('en')">EN</button>
+                    <button class="lang-btn" data-lang="ar" onclick="i18n.changeLanguage('ar')">AR</button>
                 </div>
                 <div class="user-actions">
-                    <a href="login.html" class="btn-link" data-i18n="header.login">Giriş Yap</a>
-                    <a href="register.html" class="btn-link" data-i18n="header.register">Kayıt Ol</a>
+                    <a href="login.html" class="btn-link" data-i18n="nav.login">Giriş Yap</a>
+                    <a href="register.html" class="btn-link" data-i18n="nav.register">Kayıt Ol</a>
                     <a href="cart.html" class="cart-icon">
                         <i class="fas fa-shopping-cart"></i>
                         <span class="cart-count">0</span>

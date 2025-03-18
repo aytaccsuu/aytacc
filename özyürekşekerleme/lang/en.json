@@ -1,0 +1,133 @@
+{
+    "nav": {
+        "home": "Home",
+        "products": "Products",
+        "about": "About",
+        "contact": "Contact",
+        "cart": "Cart",
+        "login": "Login",
+        "register": "Register",
+        "profile": "Profile",
+        "logout": "Logout"
+    },
+    "products": {
+        "categories": "Categories",
+        "all": "All Products",
+        "turkish_delight": "Turkish Delight",
+        "candies": "Candies",
+        "special": "Special Production",
+        "add_to_cart": "Add to Cart",
+        "weight": "Weight",
+        "price": "Price",
+        "old_price": "Old Price"
+    },
+    "cart": {
+        "empty": "Your cart is empty",
+        "subtotal": "Subtotal",
+        "shipping": "Shipping",
+        "total": "Total",
+        "checkout": "Checkout",
+        "continue_shopping": "Continue Shopping"
+    },
+    "auth": {
+        "email": "Email",
+        "password": "Password",
+        "remember_me": "Remember Me",
+        "forgot_password": "Forgot Password",
+        "login": "Login",
+        "register": "Register",
+        "name": "Full Name",
+        "phone": "Phone"
+    },
+    "errors": {
+        "required": "This field is required",
+        "invalid_email": "Invalid email address",
+        "password_length": "Password must be at least 6 characters",
+        "login_failed": "Login failed"
+    },
+    "home": {
+        "hero_title": "Modern Presentation of Traditional Taste",
+        "hero_subtitle": "Unique Turkish delight experience with Özyürek Şekerleme",
+        "shop_now": "Start Shopping Now",
+        "featured_products": "Featured Products",
+        "categories": "Categories"
+    },
+    "about": {
+        "title": "About Us",
+        "description": "Özyürek Şekerleme presents the traditional Turkish delight and candy culture to the modern world by combining it with family recipes that have been going on for years. Our products, prepared with the finest ingredients and craftsmanship, have become indispensable for those who love traditional tastes.",
+        "mission": "Our mission is to introduce our cultural heritage to the whole world and represent the traditional delight taste internationally."
+    },
+    "testimonials": {
+        "title": "Testimonials",
+        "review1": "Özyürek's delights are truly unique. I always gift this flavor to my guests from abroad.",
+        "author1": "Ahmet Y.",
+        "review2": "The candies I ordered arrived on time. Excellent in terms of packaging and freshness.",
+        "author2": "Elif K.",
+        "review3": "Thanks for my pistachio delight order, my family loved it. I will definitely order again.",
+        "author3": "Mehmet B."
+    },
+    "contact": {
+        "title": "Contact Us",
+        "address": "Istanbul, Turkey",
+        "name": "Name",
+        "email": "Email",
+        "message": "Message",
+        "send": "Send",
+        "success_message": "Your message has been sent successfully. We will get back to you as soon as possible."
+    },
+    "footer": {
+        "tagline": "The natural state of traditional taste",
+        "quick_links": "Quick Links",
+        "categories": "Categories",
+        "newsletter": "Subscribe to Our Newsletter",
+        "newsletter_info": "Subscribe for new products and special offers",
+        "subscribe": "Subscribe",
+        "rights": "All Rights Reserved"
+    },
+    "validation": {
+        "required_field": "This field is required.",
+        "invalid_email": "Please enter a valid email address.",
+        "passwords_not_match": "Passwords do not match.",
+        "password_strength": "Password Strength",
+        "password_strength_weak": "Weak",
+        "password_strength_medium": "Medium",
+        "password_strength_good": "Good",
+        "password_strength_strong": "Strong"
+    },
+    "site": {
+        "title": "Özyürek Turkish Delight - Traditional Turkish Delights",
+        "description": "Özyürek Turkish Delight offers the highest quality traditional Turkish delights and candies."
+    },
+    "header": {
+        "login": "Login",
+        "register": "Register",
+        "my_account": "My Account",
+        "my_orders": "My Orders",
+        "logout": "Logout"
+    },
+    "menu": {
+        "home": "Home",
+        "products": "Products",
+        "turkish_delight": "Turkish Delight",
+        "candy": "Candy",
+        "about": "About",
+        "contact": "Contact"
+    },
+    "categories": {
+        "all": "All Categories",
+        "turkish_delight": "Turkish Delight",
+        "candy": "Candy",
+        "special_production": "Special Production"
+    },
+    "placeholders": {
+        "search": "Search products...",
+        "email": "Your email address"
+    },
+    "buttons": {
+        "add_to_cart": "Add to Cart",
+        "buy_now": "Buy Now",
+        "subscribe": "Subscribe",
+        "send": "Send",
+        "apply": "Apply"
+    }
+}

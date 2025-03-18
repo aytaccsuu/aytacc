@@ -1236,7 +1236,7 @@ function loadSettings() {
     
     // Sosyal medya
     const facebookUrl = document.getElementById('facebook-url');
-    const instagramUrl = document.getElementById('instagram-url');
+    const instagramUrl = document.getElementById('https://www.instagram.com/ozyurek_sekerleme');
     const twitterUrl = document.getElementById('twitter-url');
     
     if (facebookUrl) facebookUrl.value = adminData.settings.social_media.facebook;

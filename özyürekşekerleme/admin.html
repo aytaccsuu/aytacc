@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
+    header("Location: login.html");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -12,6 +19,38 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="admin-panel">
+<!-- Admin Login Form -->
+    <div class="admin-login">
+        <form id="admin-login-form" action="admin_login.php" method="post">
+            <label for="username">Email:</label>
+            <input type="email" id="username" name="username" value="aytaccsu@icloud.com" readonly>
+            <label for="password">Şifre:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Giriş Yap</button>
+        </form>
+    </div>
+    <!-- Admin Registration Form -->
+    <div class="admin-register">
+        <form action="register.php" method="post">
+            <label for="reg-username">Kullanıcı Adı:</label>
+            <input type="text" id="reg-username" name="username" required>
+            <label for="reg-password">Şifre:</label>
+            <input type="password" id="reg-password" name="password" required>
+            <button type="submit">Kayıt Ol</button>
+        </form>
+    </div>
+    <!-- User Registration Form -->
+    <div class="user-register">
+        <form action="register.php" method="post">
+            <label for="reg-username">Kullanıcı Adı:</label>
+            <input type="text" id="reg-username" name="username" required>
+            <label for="reg-password">Şifre:</label>
+            <input type="password" id="reg-password" name="password" required>
+            <label for="reg-email">Email:</label>
+            <input type="email" id="reg-email" name="email" required>
+            <button type="submit">Kayıt Ol</button>
+        </form>
+    </div>
     <!-- Admin Header -->
     <header class="admin-header">
         <div class="admin-logo">
@@ -398,6 +437,24 @@
     <script src="js/i18n.js"></script>
     <script src="js/site.js"></script>
     <script src="js/admin.js"></script>
+    <script>
+    document.getElementById('admin-login-form').onsubmit = function(e) {
+        e.preventDefault();
+        
+        fetch('admin_login.php', {
+            method: 'POST',
+            body: new FormData(this)
+        })
+        .then(response => response.text())
+        .then(data => {
+            if (data === 'success') {
+                window.location.href = 'admin.html'; // Redirect to admin panel
+            } else {
+                alert('Giriş başarısız! Lütfen şifrenizi kontrol edin.');
+            }
+        });
+    };
+    </script>
 </body>
                 <!-- Kategoriler Paneli -->
             <section class="admin-panel" id="categories">
@@ -931,18 +988,20 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="form-actions">
-                        <button type="submit" class="btn-primary" data-i18n="admin.save_settings">Ayarları Kaydet</button>
-                    </div>
-                </form>
-            </section>
-        </main>
-    </div>
+                </div>
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="btn-primary" data-i18n="admin.save_settings">Ayarları Kaydet</button>
+            </div>
+        </form>
+    </section>
+</main>
+</div>
 
-    <!-- JavaScript -->
-    <script src="js/i18n.js"></script>
-    <script src="js/site.js"></script>
-    <script src="js/admin.js"></script>
+<!-- JavaScript -->
+<script src="js/i18n.js"></script>
+<script src="js/site.js"></script>
+<script src="js/admin.js"></script>
 </body>
 </html>

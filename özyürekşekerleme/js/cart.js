@@ -1035,3 +1035,87 @@ function updateProductPriceByWeight(weightOption) {
         oldPriceElement.style.display = 'none';
     }
 }
+
+class Cart {
+    constructor() {
+        this.items = JSON.parse(localStorage.getItem('cart')) || [];
+        this.updateCartUI();
+    }
+
+    // Sepete ürün ekleme
+    addItem(productId, quantity = 1) {
+        const existingItem = this.items.find(item => item.id === productId);
+        
+        if (existingItem) {
+            existingItem.quantity += parseInt(quantity);
+        } else {
+            this.items.push({
+                id: productId,
+                quantity: parseInt(quantity)
+            });
+        }
+        
+        this.saveCart();
+        this.updateCartUI();
+        this.showAddToCartMessage();
+    }
+
+    // Sepetten ürün silme
+    removeItem(productId) {
+        this.items = this.items.filter(item => item.id !== productId);
+        this.saveCart();
+        this.updateCartUI();
+    }
+
+    // Ürün miktarını güncelleme
+    updateQuantity(productId, quantity) {
+        const item = this.items.find(item => item.id === productId);
+        if (item) {
+            item.quantity = parseInt(quantity);
+            this.saveCart();
+            this.updateCartUI();
+        }
+    }
+
+    // Sepeti locale kaydetme
+    saveCart() {
+        localStorage.setItem('cart', JSON.stringify(this.items));
+    }
+
+    // Sepet UI güncellemesi
+    updateCartUI() {
+        const cartCount = document.querySelector('.cart-count');
+        if (cartCount) {
+            cartCount.textContent = this.items.reduce((total, item) => total + item.quantity, 0);
+        }
+    }
+
+    // Sepete eklendi mesajı
+    showAddToCartMessage() {
+        const message = document.createElement('div');
+        message.className = 'cart-message';
+        message.textContent = i18n.translate('cart.added_to_cart');
+        
+        document.body.appendChild(message);
+        
+        setTimeout(() => {
+            message.remove();
+        }, 2000);
+    }
+}
+
+// Cart instance'ını oluştur ve global olarak erişilebilir yap
+window.cart = new Cart();
+
+// Sepete ekle butonlarını dinle
+document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('click', (e) => {
+        if (e.target.matches('.add-to-cart, .add-to-cart *')) {
+            e.preventDefault();
+            const button = e.target.closest('.add-to-cart');
+            const productId = button.dataset.productId;
+            const quantityInput = document.querySelector(`#quantity-${productId}`) || { value: 1 };
+            cart.addItem(productId, quantityInput.value);
+        }
+    });
+});

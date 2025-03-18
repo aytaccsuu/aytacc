@@ -1,0 +1,133 @@
+{
+    "nav": {
+        "home": "Ana Sayfa",
+        "products": "Ürünler",
+        "about": "Hakkımızda",
+        "contact": "İletişim",
+        "cart": "Sepet",
+        "login": "Giriş Yap",
+        "register": "Kayıt Ol",
+        "profile": "Profilim",
+        "logout": "Çıkış"
+    },
+    "products": {
+        "categories": "Kategoriler",
+        "all": "Tüm Ürünler",
+        "turkish_delight": "Türk Lokumu",
+        "candies": "Şekerlemeler",
+        "special": "Özel Üretim",
+        "add_to_cart": "Sepete Ekle",
+        "weight": "Ağırlık",
+        "price": "Fiyat",
+        "old_price": "Eski Fiyat"
+    },
+    "cart": {
+        "added_to_cart": "Ürün sepete eklendi",
+        "empty": "Sepetiniz boş",
+        "subtotal": "Ara Toplam",
+        "shipping": "Kargo",
+        "total": "Toplam",
+        "checkout": "Ödemeye Geç",
+        "continue_shopping": "Alışverişe Devam Et"
+    },
+    "auth": {
+        "email": "E-posta",
+        "password": "Şifre",
+        "remember_me": "Beni Hatırla",
+        "forgot_password": "Şifremi Unuttum",
+        "login": "Giriş Yap",
+        "register": "Kayıt Ol",
+        "name": "Ad Soyad",
+        "phone": "Telefon"
+    },
+    "errors": {
+        "required": "Bu alan zorunludur",
+        "invalid_email": "Geçersiz e-posta adresi",
+        "password_length": "Şifre en az 6 karakter olmalıdır",
+        "login_failed": "Giriş başarısız"
+    },
+    "home": {
+        "hero_title": "Geleneksel Lezzetin Modern Sunumu",
+        "hero_subtitle": "Özyürek Şekerleme ile eşsiz Türk lokumu deneyimi",
+        "shop_now": "Hemen Alışverişe Başla",
+        "featured_products": "Öne Çıkan Ürünler",
+        "categories": "Kategoriler"
+    },
+    "about": {
+        "title": "Hakkımızda",
+        "description": "Özyürek Şekerleme, geleneksel Türk lokumu ve şekerleme kültürünü, yıllardır süregelen aile reçeteleriyle birleştirerek modern dünyaya sunmaktadır. En kaliteli malzemelerle, ustalıkla hazırlanan ürünlerimiz, geleneksel tatları sevenlerin vazgeçilmezi olmuştur.",
+        "mission": "Misyonumuz, kültürel mirasımızı tüm dünyaya tanıtmak ve geleneksel lokum lezzetini uluslararası alanda temsil etmektir."
+    },
+    "testimonials": {
+        "title": "Müşteri Yorumları",
+        "review1": "Özyürek'in lokumları gerçekten eşsiz. Yurtdışından gelen misafirlerime her zaman bu lezzeti hediye ediyorum.",
+        "author1": "Ahmet Y.",
+        "review2": "Sipariş verdiğim şekerlemeler tam zamanında geldi. Ambalaj ve tazelik konusunda mükemmel.",
+        "author2": "Elif K.",
+        "review3": "Antep fıstıklı lokum siparişim için teşekkürler, ailece bayıldık. Kesinlikle tekrar sipariş vereceğim.",
+        "author3": "Mehmet B."
+    },
+    "contact": {
+        "title": "Bize Ulaşın",
+        "address": "İstanbul, Türkiye",
+        "name": "İsim",
+        "email": "E-posta",
+        "message": "Mesaj",
+        "send": "Gönder",
+        "success_message": "Mesajınız başarıyla gönderildi. En kısa sürede size dönüş yapacağız."
+    },
+    "footer": {
+        "tagline": "Geleneksel lezzetin doğal hali",
+        "quick_links": "Hızlı Bağlantılar",
+        "categories": "Kategoriler",
+        "newsletter": "Bültenimize Abone Olun",
+        "newsletter_info": "Yeni ürünler ve özel teklifler için abone olun",
+        "subscribe": "Abone Ol",
+        "rights": "Tüm Hakları Saklıdır"
+    },
+    "validation": {
+        "required_field": "Bu alan zorunludur.",
+        "invalid_email": "Geçerli bir e-posta adresi giriniz.",
+        "passwords_not_match": "Şifreler eşleşmiyor.",
+        "password_strength": "Şifre Gücü",
+        "password_strength_weak": "Zayıf",
+        "password_strength_medium": "Orta",
+        "password_strength_good": "İyi",
+        "password_strength_strong": "Güçlü"
+    },
+    "site": {
+        "title": "Özyürek Şekerleme - Geleneksel Türk Lokumu",
+        "description": "Özyürek Şekerleme, en kaliteli Türk lokumları ve şekerlemeleri sunan geleneksel bir markadır."
+    },
+    "header": {
+        "login": "Giriş Yap",
+        "register": "Kayıt Ol",
+        "my_account": "Hesabım",
+        "my_orders": "Siparişlerim",
+        "logout": "Çıkış Yap"
+    },
+    "menu": {
+        "home": "Ana Sayfa",
+        "products": "Ürünler",
+        "categories": "Kategoriler",
+        "about": "Hakkımızda",
+        "contact": "İletişim"
+    },
+    "categories": {
+        "all": "Tüm Kategoriler",
+        "turkish_delight": "Türk Lokumu",
+        "candy": "Şekerleme",
+        "special_production": "Özel Üretim"
+    },
+    "placeholders": {
+        "search": "Ürün ara...",
+        "email": "E-posta adresiniz"
+    },
+    "buttons": {
+        "add_to_cart": "Sepete Ekle",
+        "buy_now": "Hemen Al",
+        "subscribe": "Abone Ol",
+        "send": "Gönder",
+        "apply": "Uygula"
+    }
+}
